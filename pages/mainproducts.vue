@@ -1,11 +1,13 @@
 <template>
-  <div class="products">
-    <section class="hero is-fullheight products-hero">
+  <div class="products" v-editable="story.content">
+    <section class="hero is-fullheight products-hero"
+      :style="{'background-image': 'url(' + story.content.image + ')'}"
+    >
       <div class="hero-body">
         <div class="container">
           <div class="hero-content has-text-white has-text-centered">
-            <h2 class="is-size-6">CHILKAT VALLEY TREES IN HAINES, ALASKA</h2>
-            <h1>QUALITY TIMBER PRODUCTS</h1>
+            <h2 class="is-size-6">{{story.content.subtitle}}</h2>
+            <h1>{{story.content.title}}</h1>
           </div>
         </div>
       </div>
@@ -15,10 +17,7 @@
         <div class="columns">
           <div class="column is-12 has-text-white">
             <h3 class="is-size-4">TIMBER PRODUCTS <span>></span></h3>
-            <p>We offer Rough-Cut Lumber, Timber-Frame Timbers, Siding Boards, hand-selected Wood for Woodworkers, Birch Boards, Slabs, and Mill-Run Firewood.</p>
-            <p>Our trees include Spruce, Hemlock, Cottonwood, and Birch. Each species has its own unique characteristics and we are happy to help ensure you have the right species to suit your unique needs.</p>
-            <p>For more information, visit our  <a href="#">TOOL CHEST</a> for species information and description.
-            </p>
+            <div v-html="story.content.timberProductsDescription.content"></div>
           </div>
         </div>
       </div>
@@ -45,7 +44,28 @@
 </template>
 
 <script>
+import storyblockLivePreview from "@/mixins/storyblokLivePreview";
+
 export default {
+  data: () => ({
+    story: { content: {} },
+  }),
+  mixins: [storyblockLivePreview],
+  asyncData(context) {
+    let version = context.query._storyblock || context.isDev ? "draft" : "published";
+    return context.app.$storyapi.get(`cdn/stories/mainproducts`, {
+        version: version
+      })
+      .then(res => {
+        return res.data;
+      })
+      .catch(res => {
+        context.error({
+          statusCode: res.response.status,
+          message: res.response.data
+        });
+      });
+  },
   computed: {
     products () {
       return this.$store.state.products.product
