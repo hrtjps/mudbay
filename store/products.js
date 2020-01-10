@@ -26,7 +26,6 @@ export const state = () => ({
       productDescritionTwo: 'Hemlock is superior for its durability and rot resistant qualities; spruce is more affordable. When installing, it is essential that siding boards have adequate air flow. Do not let boards touch the ground. We recommend shingle oil for additional protection.',
       productDescritionThree: 'See our TOOL CHEST for installation directions.',
       tip: 'Tip: Price by volume increases for lengths over 16’ and 20’, and for dimensions over 3 board feet/lineal foot.',
-
     },
     {
       id: 'timber-frames-products',
