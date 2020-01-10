@@ -1,6 +1,6 @@
 <template>
   <div class="index" v-editable="story.content">
-    <section style="margin-top: -179px;" class="index-hero-section" v-editable="story.content">
+    <section style="margin-top: -220px;" class="index-hero-section" v-editable="story.content">
       <b-carousel
         v-model="carousel"
         :animated="animated"
