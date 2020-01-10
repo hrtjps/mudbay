@@ -1,0 +1,188 @@
+.index {
+
+
+&-hero {
+  .container {
+    margin-top: 250px;
+  }
+  a {
+    font-size: 2.313rem;
+    color: inherit;
+    font-family: $fontheader;
+    padding-top: 33px;
+  }
+  h5 {
+    padding-right: 920px;
+    margin-bottom: 33px;
+    @include mobile {
+      padding-right: 0px;
+    }
+    @include tablet {
+      padding-right: 100px;
+    }
+
+    @include fullhd {
+      padding-right: 920px;
+      margin-bottom: 33px;
+    }
+  }
+} //end hero
+
+
+&--featured-products {
+    background-color: rgb(66, 54, 41);
+    height: 740px;
+    margin-bottom: 220px;
+
+    .card {
+      position: relative;
+    }
+
+    .card-content {
+      position: absolute;
+      top: 71%;
+      h1, p {
+        color: white;
+      }
+      h1 {
+        text-transform: uppercase;
+      }
+      p {
+        font-family: acumin-pro;
+        color: #c7cfd9;
+      }
+      a {
+        color: #c7cfd9;
+      }
+    }
+
+     h3 {
+       color: white;
+       padding-top: 100px;
+     }
+
+     @include mobile {
+       height: auto;
+       margin-bottom: 0px;
+     }
+
+     @include tablet {
+       height: auto;
+       margin-bottom: 0;
+     }
+
+     @include fullhd {
+       height: 740px;
+       margin-bottom: 220px;
+     }
+} //end featured-products
+
+&--mission {
+  h1 {
+    color: $green;
+  }
+  p {
+    color: $lightgreen;
+    padding-right: 250px;
+    margin-bottom: 25px;
+
+    @include mobile {
+      padding-right: 0;
+    }
+    @include tablet {
+      padding-right: 0px;
+    }
+    @include fullhd {
+      padding-right: 250px;
+    }
+  }
+}
+
+
+&--about {
+
+    h1 {
+      color: $orange;
+    }
+
+    a {
+      color: $orange;
+      font-size: 2.313rem;
+      font-family: $fontheader;
+      padding-top: 33px;
+    }
+
+    p {
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .container {
+      height: 576px;
+      @include mobile {
+        height: auto;
+      }
+
+      @include tablet {
+        height: auto;
+      }
+      @include fullhd {
+        height: 576px;
+      }
+    }
+
+    .is-fluid {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .is-7 {
+      padding-bottom: 0;
+      margin-top: 50px;
+      padding-left: 209px;
+      padding-right: 440px;
+      @include mobile {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      @include tablet-only {
+        padding-left: 35px;
+        padding-right: 15px;
+        width: 100%;
+      }
+    }
+
+    .is-5 {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-right: 0;
+      img {
+        position: relative;
+        right: -14px;
+      }
+      @include tablet-only {
+        width: 100%;
+      }
+    }
+
+  } // end about
+
+  .index-calculator {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 12px;
+    background-color: $lightgreen;
+    .container {
+      height: 11.75rem;
+    }
+    a {
+      color: white;
+      padding-top: 60px;
+    }
+  } //end index-calculator
+
+  &--instagram {
+    margin-top: 100px;
+  }
+
+} // end index

@@ -1,0 +1,26 @@
+{
+  "name": "MBVersion1",
+  "version": "1.0.0",
+  "description": "Mud Bay Lumber Company Website",
+  "author": "North Creative Design Co",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "nuxt": "^2.0.0",
+    "nuxt-buefy": "^0.3.2",
+    "storyblok-nuxt": "^1.0.2"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.0",
+    "nodemon": "^1.18.9",
+    "sass-loader": "^8.0.0"
+  }
+}

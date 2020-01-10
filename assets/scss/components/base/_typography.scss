@@ -1,0 +1,79 @@
+h1 {
+  font-family: $fontheader;
+  font-size: $size-1;
+  @include mobile {
+    font-size: 3.1rem;
+  }
+  @include tablet {
+    font-size: $size-2;
+  }
+  @include widescreen {
+    font-size: $size-1;
+  }
+}
+
+h2 {
+  font-family: $fontsubheader;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: $fontheader;
+  span {
+    font-family: $fontsubheader;
+    font-weight: 300;
+    font-size: 1.125rem;
+  }
+}
+
+h4 {
+  font-family: $fontheader;
+}
+
+h5 {
+  font-family: $fontsubheader;
+  font-weight: 500;
+}
+
+p {
+  font-family: $fontsubheader;
+  font-weight: 500;
+  font-size: $size-6;
+}
+
+
+.questions {
+  &--dropdowns {
+
+    h3 {
+      color: #a67438;
+      margin-top: 100px;
+    }
+
+    &__card {
+      background-image: linear-gradient(to right, #a67438 0%, #423629 100%);
+      margin-bottom: 30px;
+
+      a {
+        color: white;
+      }
+
+      .card-content {
+        margin-bottom: 30px;
+        background-color: white;
+        color: #261b14;
+        font-family: "Acumin Pro";
+        font-size: 1.438rem;
+        font-weight: 500;
+        border: none;
+      }
+    }
+
+    .card-header-title {
+      font-family: "Acumin Pro";
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+ .about {
+
+   &--main-content {
+     margin-top: -60px;
+     p, h2 {
+       color: white;
+     }
+     h2 {
+       margin-top: 150px;
+       margin-bottom: 85px;
+       font-family: $fontheader;
+       font-size: 2.313rem;
+       font-weight: 700;
+       letter-spacing: 0.058rem;
+       padding-left: 80px;
+       padding-right: 130px
+     }
+     p {
+       margin-bottom: 30px;
+       font-family: $fontsubheader;
+       font-size: 1.438rem;
+       font-weight: 500;
+       padding-left: 80px;
+       padding-right: 130px;
+     }
+
+     &__chad-img {
+       background: url('~assets/img/about_chad.jpg');
+       background-size: cover;
+       background-position: center;
+       height: 772px;
+     }
+
+     &__chad-details {
+       background-color: $treegreen;
+     }
+
+     &__sylvia-img {
+       background: url('~assets/img/about_sylvia.jpg');
+       background-size: cover;
+       background-position: center;
+       height: 772px;
+     }
+
+     &__sylvia-details {
+       background-color: #738c3e;
+     }
+
+     &__sage-img {
+       background: url('~assets/img/about_sage.jpg');
+       background-size: cover;
+       background-position: center;
+       height: 772px;
+     }
+     &__sage-details {
+       background-color: #423629;
+     }
+
+     &__scott-details {
+       background-color: #a67438;
+     }
+
+     &__scott-img {
+       background: url('~assets/img/about_scott.jpg');
+       background-size: cover;
+       background-position: center;
+       height: 772px;
+     }
+   }
+ }

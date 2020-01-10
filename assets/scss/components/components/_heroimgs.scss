@@ -1,0 +1,175 @@
+.index-hero-one {
+  @include heroimg('~assets/img/hero_slide_1.jpg');
+}
+
+.index-hero-two {
+  @include heroimg('~assets/img/hero_slide_2.jpg');
+}
+
+.index-hero-three {
+  @include heroimg('~assets/img/hero_slide_3.jpg');
+}
+
+
+.products-hero {
+  @include heroimg('~assets/img/products_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+
+.about-hero {
+  @include heroimg('~assets/img/about_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+.calculator-hero {
+  @include heroimg('~assets/img/board_calculator_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+.rough-cut-hero {
+  @include heroimg('~assets/img/rough_cut_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+.batten-hero {
+  @include heroimg('~assets/img/batten_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+.timber-hero {
+  @include heroimg('~assets/img/timber_frame_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+.woodworkers-hero {
+  @include heroimg('~assets/img/woodworkers_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+.birch-board-hero {
+  @include heroimg('~assets/img/birch_board_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+.firewood-hero {
+  @include heroimg('~assets/img/firewood_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+
+.questions-hero {
+  @include heroimg('~assets/img/questions_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+
+.process-hero {
+  @include heroimg('~assets/img/process_hero.jpg');
+  margin-top: -211px;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
+.index-hero-section {
+  .hero.is-fullheight {
+    min-height: 100vh;
+  }
+}

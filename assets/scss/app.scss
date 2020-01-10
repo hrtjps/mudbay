@@ -1,0 +1,37 @@
+@import url("https://use.typekit.net/mxh6hsg.css");
+
+$green: #47594a;
+$size-1: 5.063rem;
+$size-2: 3.75rem;
+$size-3: 2.813rem;
+$size-4: 2.313rem;
+$size-5: 1.75rem;
+$size-6: 1.125rem;
+
+
+@import "~bulma/sass/utilities/_all.sass";
+
+@import "~bulma/bulma";
+
+.container {
+  @include fullhd {
+    max-width: 1708px;
+  }
+}
+
+@import "/components/abstract/mixins";
+
+@import "components/base/typography";
+
+
+
+@import "/components/components/heroimgs";
+@import "/components/components/navigation";
+@import "/components/components/footer";
+@import "components/components/cards";
+
+
+
+@import "components/pages/index";
+@import "components/pages/products";
+@import "components/pages/about";

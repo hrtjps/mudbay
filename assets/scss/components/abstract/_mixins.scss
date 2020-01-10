@@ -1,0 +1,72 @@
+@mixin heroimg($imgpath, $position: center, $size: cover) {
+  background: {
+    image: url($imgpath);
+    position: $position;
+    size: $size;
+  }
+}
+
+
+@font-face {
+  font-family: "DavishBold";
+  src:url("~assets/fonts/Davish-Bold.otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+$fontheader: "DavishBold";
+$fontsubheader: "acumin-pro";
+$lightgreen: #738c3e;
+$treegreen: #47594a;
+$orange: #a67438;
+
+
+// Media Query Mixins
+$large: 1750px;
+$dsktop: 1200px;
+$laptop: 992px;
+$tabletscreen: 760px;
+$mobilephone: 820px;
+
+
+@mixin xxlarge {
+    @media (min-width: #{$large}){
+        @content;
+    }
+}
+
+@mixin xlarge {
+    @media (min-width: #{$fullhd}) and (max-width: #{$large}){
+        @content;
+    }
+}
+
+@mixin tabletland {
+    @media (min-width: #{$tabletscreen}) and (max-width: #{$dsktop}) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+        @content;
+    }
+}
+
+@mixin tabletport {
+    @media (min-width: #{$tabletscreen}) and (max-width: #{$dsktop}) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+        @content;
+    }
+}
+
+@mixin mobileland {
+    @media (max-width: #{$mobilephone}) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+        @content;
+    }
+}
+
+@mixin mobileport {
+    @media (max-width: #{$mobilephone}) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+        @content;
+    }
+}
+
+@mixin iphoneFive {
+  @media (max-width: 325px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
