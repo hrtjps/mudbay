@@ -63,8 +63,6 @@ export default {
   mixins: [storyblockLivePreview],
   asyncData(context) {
     let version = context.query._storyblock || context.isDev ? "draft" : "published";
-    console.log(context.params);
-    
     return context.app.$storyapi.get(`cdn/stories/products/${context.params.slug}`, {
         version: version,
         cv: context.store.state.cacheVersion

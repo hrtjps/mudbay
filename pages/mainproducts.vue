@@ -92,7 +92,6 @@ export default {
           message: res.response.data
         });
       });
-      console.log(data);
       return { story: {content: data.story.content}, products: p};
   },
 };

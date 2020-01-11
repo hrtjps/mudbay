@@ -23,6 +23,11 @@
        padding-left: 80px;
        padding-right: 130px;
      }
+     .item-img {
+      background-size: cover !important;
+      background-position: center !important;
+      height: 772px !important;
+     }
 
      &__chad-img {
        background: url('~assets/img/about_chad.jpg');
