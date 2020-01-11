@@ -1,11 +1,14 @@
 <template>
   <div class="about">
-    <section class="hero is-fullheight about-hero" v-editable="story.content.Hero[0]" >
+    <section class="hero is-fullheight about-hero" 
+      v-editable="story.content.Hero[0]" 
+      :style="{'background-image': 'url(' + story.content.Hero[0].image + ')'}"
+      >
       <div class="hero-body">
         <div class="container">
           <div class="hero-content has-text-white has-text-centered">
-            <h2 class="is-size-6">THE PEOPLE BEHIND</h2>
-            <h1>MUD BAY LUMBER CO</h1>
+            <h2 class="is-size-6">{{story.content.Hero[0].subtitle}}</h2>
+            <h1>{{story.content.Hero[0].title}}</h1>
           </div>
         </div>
       </div>
