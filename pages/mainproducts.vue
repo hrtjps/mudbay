@@ -43,6 +43,7 @@
                   <h1 class="is-size-3">{{product.content.title}}</h1>
                   <p>{{product.content.content}}</p>
                 </div>
+                <h1 style="color:white; font-size:4.5rem; position:absolute; top:35%; width:100%; text-align:center" >{{product.content.soon}}</h1>
               </div>
             </nuxt-link>
           </div>
