@@ -148,7 +148,6 @@ export default {
         version: version
       })
       .then(res => {
-        console.log(res.data.story.content.AboutThePeopleSection);
         return res.data;
       })
       .catch(res => {

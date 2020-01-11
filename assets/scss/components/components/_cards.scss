@@ -65,7 +65,12 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.product-item-card-img {
+  height: 56.188rem;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
 #firewood-products {
   @extend #rough-timber-products;
   background: url('~assets/img/firewood_product_bg.jpg');
