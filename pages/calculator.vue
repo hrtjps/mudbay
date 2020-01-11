@@ -1,11 +1,14 @@
 <template>
   <div class="calculator">
-    <section class="hero is-fullheight calculator-hero">
+    <section class="hero is-fullheight calculator-hero"
+      v-editable="story.content.Hero[0]" 
+      :style="{'background-image': 'url(' + story.content.Hero[0].image + ')'}"
+    >
       <div class="hero-body">
         <div class="container">
           <div class="hero-content has-text-white has-text-centered">
-            <h2 class="is-size-6">LUMER IS SOLD BY THE BOARD FOOT.</h2>
-            <h1>BOARD FOOT CALCULATOR</h1>
+            <h2 class="is-size-6">{{story.content.Hero[0].subtitle}}</h2>
+            <h1>{{story.content.Hero[0].title}}</h1>
           </div>
         </div>
       </div>
@@ -43,7 +46,7 @@
                       <h6>Width:</h6>
                     </div>
                     <div class="column is-8">
-                        <input placeholder="No label"></input>
+                        <input placeholder="No label" />
                     </div>
                   </div>
               </div>
@@ -53,7 +56,7 @@
                     <h6>Length:</h6>
                   </div>
                   <div class="column is-8">
-                    <input placeholder="No label"></input>
+                    <input placeholder="No label" />
                   </div>
                 </div>
               </div>
@@ -63,7 +66,7 @@
                     <h6>Length:</h6>
                   </div>
                   <div class="column is-8">
-                    <input placeholder="No label"></input>
+                    <input placeholder="No label"/>
                   </div>
                 </div>
               </div>
@@ -150,6 +153,27 @@
 </template>
 
 <script>
+import storyblockLivePreview from "@/mixins/storyblokLivePreview";
+
 export default {
+  data: () => ({
+    story: { content: {} },
+  }),
+  mixins: [storyblockLivePreview],
+  asyncData(context) {
+    let version = context.query._storyblock || context.isDev ? "draft" : "published";
+    return context.app.$storyapi.get(`cdn/stories/calculator`, {
+        version: version,
+      })
+      .then(res => {
+        return res.data;
+      })
+      .catch(res => {
+        context.error({
+          statusCode: res.response.status,
+          message: res.response.data
+        });
+      });
+  }
 }
 </script>
