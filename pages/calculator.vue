@@ -1,7 +1,7 @@
 <template>
   <div class="calculator">
     <section class="hero is-fullheight calculator-hero"
-      v-editable="story.content.Hero[0]" 
+      v-editable="story.content.Hero[0]"
       :style="{'background-image': 'url(' + story.content.Hero[0].image + ')'}"
     >
       <div class="hero-body">
@@ -29,7 +29,7 @@
             <div class="columns is-multiline">
               <div class="column is-12">
                 <div class="columns">
-                  <div class="column is-2">
+                  <div class="column is-3">
                     <h6>Thickness of Wood:</h6>
                   </div>
                   <div class="column is-8">
@@ -42,42 +42,42 @@
               </div>
               <div class="column is-4">
                   <div class="columns">
-                    <div class="column is-2">
+                    <div class="column is-3">
                       <h6>Width:</h6>
                     </div>
                     <div class="column is-8">
-                        <input placeholder="No label" />
+                        <input>
                     </div>
                   </div>
               </div>
               <div class="column is-4">
                 <div class="columns">
-                  <div class="column is-2">
+                  <div class="column is-3">
                     <h6>Length:</h6>
                   </div>
                   <div class="column is-8">
-                    <input placeholder="No label" />
+                    <input>
                   </div>
                 </div>
               </div>
               <div class="column is-4">
                 <div class="columns">
-                  <div class="column is-2">
+                  <div class="column is-3">
                     <h6>Length:</h6>
                   </div>
                   <div class="column is-8">
-                    <input placeholder="No label"/>
+                    <input>
                   </div>
                 </div>
               </div>
               <div class="column is-12">
-                Total:
+                <h6>Total:</h6>
               </div>
               <div class="column is-4">
-                <button class="buttons calculate-btn">CALCULATE</button>
+                <button class="btn calculate-btn">CALCULATE</button>
               </div>
               <div class="column is-4">
-                <button class="buttons clear-btn">CLEAR</button>
+                <button class="btn clear-btn">CLEAR</button>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@
           <div class="column is-12">
             <p>The handwritten form is:</p>
           </div>
-          <div class="column is-3 calculator--handritten__board-footage">
+          <div class="column is-2 board__footage">
             <h3 class="size-is-4">BOARD FOOTAGE = </h3>
           </div>
           <div class="column is-5">
@@ -113,7 +113,7 @@
             </div>
           </div>
         </div>
-        <div class="columns is-multiline">
+        <div class="columns is-multiline calculator_option_2">
           <div class="column is-12">
             <p>Example: A 2” thick board is 7” inches wide and 10 feet long, is 11.67 bd.ft.</p>
           </div>
@@ -127,7 +127,7 @@
               </div>
             </div>
           </div>
-          <div class="column is-2">
+          <div class="column is-2 board_answer">
             <h5>= 11.67 bd.ft</h5>
           </div>
           <div class="column is-1">
@@ -143,7 +143,7 @@
               </div>
             </div>
           </div>
-          <div class="column is-2">
+          <div class="column is-2 board_answer">
             <h5>= 11.67 bd.ft</h5>
           </div>
         </div>
