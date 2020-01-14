@@ -33,9 +33,17 @@
                     <h6>Thickness of Wood:</h6>
                   </div>
                   <div class="column is-8">
-                    <select>
-                        <option value="flint" selected>Flint</option>
-                        <option value="silver">Silver</option>
+                    <select ref="thick">
+                        <option value="1" selected>1"</option>
+                        <option value="2">2"</option>
+                        <option value="3">3"</option>
+                        <option value="4">4"</option>
+                        <option value="5">5"</option>
+                        <option value="6">6"</option>
+                        <option value="7">7"</option>
+                        <option value="8">8"</option>
+                        <option value="9">9"</option>
+                        <option value="10">10"</option>
                     </select>
                   </div>
                 </div>
@@ -56,23 +64,22 @@
                     <h6>Length:</h6>
                   </div>
                   <div class="column is-8">
-                    <input ref="length1" type="number">
+                    <input ref="length1" type="number"> <span><h6>(feet)</h6></span>
                   </div>
                 </div>
               </div>
               <div class="column is-4">
                 <div class="columns">
                   <div class="column is-3">
-                    <h6>Length:</h6>
+                    <h6>Or:</h6>
                   </div>
                   <div class="column is-8">
-                    <input ref="length2" type="number">
+                    <input ref="length2" type="number"><span><h6>(inches)</h6></span>
                   </div>
                 </div>
               </div>
               <div class="column is-12">
-                <h6>Total: <span ref="result"></span></h6> 
-                
+                <h6>Total: <span ref="result"></span></h6>
               </div>
               <div class="column is-4">
                 <button class="btn calculate-btn" v-on:click="calculate()">CALCULATE</button>
@@ -121,7 +128,7 @@
           <div class="column is-2">
             <div class="columns is-multiline">
               <div class="column is-12">
-                <h5>7” x 10” x 2”</h5>
+                <h5>7” x 10' x 2”</h5>
               </div>
               <div class="column is-12">
                 <h5>Divided by 12</h5>
@@ -152,19 +159,9 @@
     </section>
   </div>
 </template>
-
 <script>
 import storyblockLivePreview from "@/mixins/storyblokLivePreview";
-
 export default {
-  // data (){
-  //   return {
-  //     width: 10,
-  //     length1: 0,
-  //     length2: 0,
-  //     story: { content: {} },
-  //   };
-  // },
   mixins: [storyblockLivePreview],
   asyncData(context) {
     let version = context.query._storyblock || context.isDev ? "draft" : "published";
@@ -174,12 +171,6 @@ export default {
       .then(res => {
         return {
           ...res.data,
-          
-          // width: 10,
-          // length1: 0,
-          // length2: 2,
-          val1: 0,
-          val2: 0
         };
       })
       .catch(res => {
@@ -192,17 +183,18 @@ export default {
   },
   methods: {
     calculate() {
+      const thick = this.$refs['thick'].value;
       const width = this.$refs['width'].value;
       const length1 = this.$refs['length1'].value;
       const length2 = this.$refs['length2'].value;
-      let val1 = Math.round(((width*length1*length2)/12)*100)/100;
-      let val2 = Math.round(((width*length1*length2)/144)*100)/100;
-      this.$refs['result'].innerText = val1 + '  &  ' + val2;
-
+      let val1 = Math.round(((width*length1*thick)/12)*100)/100;
+      let val2 = Math.round(((width*length1*thick)/144)*100)/100;
+      this.$refs['result'].innerText = val1 + 'bd.ft  &  ' + val2 + 'bd.ft';
     },
     clear() {
-      
+      console.log(this.$refs);
       this.$refs['width'].value = 0;
+      this.$refs['thick'].selectedIndex = 0;
       this.$refs['length1'].value = 0;
       this.$refs['length2'].value = 0;
       this.$refs['result'].innerText = '';
