@@ -33,17 +33,8 @@
                     <h6>Thickness of Wood:</h6>
                   </div>
                   <div class="column is-8">
-                    <select ref="thick">
-                        <option value="1" selected>1"</option>
-                        <option value="2">2"</option>
-                        <option value="3">3"</option>
-                        <option value="4">4"</option>
-                        <option value="5">5"</option>
-                        <option value="6">6"</option>
-                        <option value="7">7"</option>
-                        <option value="8">8"</option>
-                        <option value="9">9"</option>
-                        <option value="10">10"</option>
+                    <select ref="thick" v-model="thick">
+                      <option :value="item" v-for="(item, key) in [1,2,3,4,5,6,7,8,9,10]" :key="key">{{item}}"</option>
                     </select>
                   </div>
                 </div>
@@ -54,7 +45,7 @@
                       <h6>Width:</h6>
                     </div>
                     <div class="column is-8">
-                        <input ref="width" type="number">
+                        <input ref="width" type="number" v-model="width">
                     </div>
                   </div>
               </div>
@@ -64,7 +55,7 @@
                     <h6>Length:</h6>
                   </div>
                   <div class="column is-8">
-                    <input ref="length1" type="number"> <span><h6>(feet)</h6></span>
+                    <input ref="length1" type="number" v-model="length1"> <span><h6>(feet)</h6></span>
                   </div>
                 </div>
               </div>
@@ -74,7 +65,7 @@
                     <h6>Or:</h6>
                   </div>
                   <div class="column is-8">
-                    <input ref="length2" type="number"><span><h6>(inches)</h6></span>
+                    <input ref="length2" type="number" v-model="length2"><span><h6>(inches)</h6></span>
                   </div>
                 </div>
               </div>
@@ -82,7 +73,7 @@
                 <h6>Total: <span ref="result"></span></h6>
               </div>
               <div class="column is-4">
-                <button class="btn calculate-btn" v-on:click="calculate()">CALCULATE</button>
+                <button class="btn calculate-btn" @click="calculate()">CALCULATE</button>
               </div>
               <div class="column is-4">
                 <button class="btn clear-btn" @click="clear()">CLEAR</button>
@@ -162,6 +153,19 @@
 <script>
 import storyblockLivePreview from "@/mixins/storyblokLivePreview";
 export default {
+  data() {
+    return {
+      thick: 1,
+      width: 0,
+      length1: 0,
+      length2: 0,
+      result1: 0,
+      result2: 0,
+      story: {
+        content: {}
+      },      
+    }
+  },
   mixins: [storyblockLivePreview],
   asyncData(context) {
     let version = context.query._storyblock || context.isDev ? "draft" : "published";
@@ -175,29 +179,25 @@ export default {
       })
       .catch(res => {
         console.log(res)
-        // context.error({
-        //   statusCode: res.response.status,
-        //   message: res.response.data
-        // });
+        context.error({
+          statusCode: res.response.status,
+          message: res.response.data
+        });
       });
   },
   methods: {
     calculate() {
-      const thick = this.$refs['thick'].value;
-      const width = this.$refs['width'].value;
-      const length1 = this.$refs['length1'].value;
-      const length2 = this.$refs['length2'].value;
-      let val1 = Math.round(((width*length1*thick)/12)*100)/100;
-      let val2 = Math.round(((width*length1*thick)/144)*100)/100;
-      this.$refs['result'].innerText = val1 + 'bd.ft  &  ' + val2 + 'bd.ft';
+      this.result1 = Math.round(((this.width*this.length1*this.thick)/12)*100)/100;
+      this.result2 = Math.round(((this.width*this.length1*this.thick)/144)*100)/100;
+      this.$refs['result'].innerText = this.result1 + 'bd.ft  &  ' + this.result2 + 'bd.ft';
     },
     clear() {
       console.log(this.$refs);
-      this.$refs['width'].value = 0;
-      this.$refs['thick'].selectedIndex = 0;
-      this.$refs['length1'].value = 0;
-      this.$refs['length2'].value = 0;
-      this.$refs['result'].innerText = '';
+      this.width = 0;
+      this.thick = 1;
+      this.length1 = 0;
+      this.length2 = 0;
+      this.result = '';
     }
   }
 }
