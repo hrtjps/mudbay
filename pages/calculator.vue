@@ -46,7 +46,7 @@
                       <h6>Width:</h6>
                     </div>
                     <div class="column is-8">
-                        <input>
+                        <input ref="width" type="number">
                     </div>
                   </div>
               </div>
@@ -56,7 +56,7 @@
                     <h6>Length:</h6>
                   </div>
                   <div class="column is-8">
-                    <input>
+                    <input ref="length1" type="number">
                   </div>
                 </div>
               </div>
@@ -66,18 +66,19 @@
                     <h6>Length:</h6>
                   </div>
                   <div class="column is-8">
-                    <input>
+                    <input ref="length2" type="number">
                   </div>
                 </div>
               </div>
               <div class="column is-12">
-                <h6>Total:</h6>
+                <h6>Total: <span ref="result"></span></h6> 
+                
               </div>
               <div class="column is-4">
-                <button class="btn calculate-btn">CALCULATE</button>
+                <button class="btn calculate-btn" v-on:click="calculate()">CALCULATE</button>
               </div>
               <div class="column is-4">
-                <button class="btn clear-btn">CLEAR</button>
+                <button class="btn clear-btn" @click="clear()">CLEAR</button>
               </div>
             </div>
           </div>
@@ -156,9 +157,14 @@
 import storyblockLivePreview from "@/mixins/storyblokLivePreview";
 
 export default {
-  data: () => ({
-    story: { content: {} },
-  }),
+  // data (){
+  //   return {
+  //     width: 10,
+  //     length1: 0,
+  //     length2: 0,
+  //     story: { content: {} },
+  //   };
+  // },
   mixins: [storyblockLivePreview],
   asyncData(context) {
     let version = context.query._storyblock || context.isDev ? "draft" : "published";
@@ -166,14 +172,41 @@ export default {
         version: version,
       })
       .then(res => {
-        return res.data;
+        return {
+          ...res.data,
+          
+          // width: 10,
+          // length1: 0,
+          // length2: 2,
+          val1: 0,
+          val2: 0
+        };
       })
       .catch(res => {
-        context.error({
-          statusCode: res.response.status,
-          message: res.response.data
-        });
+        console.log(res)
+        // context.error({
+        //   statusCode: res.response.status,
+        //   message: res.response.data
+        // });
       });
+  },
+  methods: {
+    calculate() {
+      const width = this.$refs['width'].value;
+      const length1 = this.$refs['length1'].value;
+      const length2 = this.$refs['length2'].value;
+      let val1 = Math.round(((width*length1*length2)/12)*100)/100;
+      let val2 = Math.round(((width*length1*length2)/144)*100)/100;
+      this.$refs['result'].innerText = val1 + '  &  ' + val2;
+
+    },
+    clear() {
+      
+      this.$refs['width'].value = 0;
+      this.$refs['length1'].value = 0;
+      this.$refs['length2'].value = 0;
+      this.$refs['result'].innerText = '';
+    }
   }
 }
 </script>
