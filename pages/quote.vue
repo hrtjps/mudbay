@@ -56,7 +56,7 @@
                     </div>
                     <div class="column is-1">
                       <select v-model="item.dimension">
-                        <option value="0" disabled>Select an Option</option>
+                        <option value="" disabled>Select an Option</option>
                         <option :value="d.price" v-for="(d, k1) in dimensions" :key="k1">{{d.thick}}x{{d.width}}</option>
                       </select>
                     </div>
