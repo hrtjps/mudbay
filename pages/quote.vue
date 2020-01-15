@@ -56,8 +56,8 @@
                     </div>
                     <div class="column is-1">
                       <select v-model="item.dimension">
-                        <option value="" disabled>Select an Option</option>
-                        <option :value="d.price" v-for="(d, k1) in dimensions" :key="k1">{{d.thick}}x{{d.width}}</option>
+                        <option :value="-1" disabled>Select an Option</option>
+                        <option :value="k1" v-for="(d, k1) in dimensions" :key="k1">{{d.thick}}x{{d.width}}</option>
                       </select>
                     </div>
                     <div class="column is-1">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="column is-1">
                       <select v-model="item.length">
-                        <option value="" disabled>Select an Option</option>
+                        <option :value="-1" disabled>Select an Option</option>
                         <option :value="spec" v-for="(spec, k1) in lengths" :key="k1">{{spec}}’</option>
                       </select>
                     </div>
@@ -78,7 +78,9 @@
                       </b-field>
                     </div>
                     <div class="column 1">
-                      <h6 v-if="item.dimension">${{item.dimension*item.quantity}}</h6>
+                      <h6 v-if="item.dimension>=0 && item.length>=0 ">
+                        ${{Math.round(dimensions[item.dimension].width * dimensions[item.dimension].thick * item.length * item.quantity / 12 * 100)/100}}
+                      </h6>
                     </div>
                   </div>
                 </div>
@@ -118,57 +120,57 @@ export default {
       isOpen: 0,
       constSpecies: ['Species 1', 'Species 2'],
       dimensions: [
-        {thick:1, width:2, price: 1.20},
-        {thick:1, width:4, price: 1.20},
-        {thick:1, width:6, price: 1.00},
-        {thick:1, width:8, price: 1.00},
-        {thick:1, width:10, price: 1.10},
-        {thick:1, width:12, price: 1.10},
-        {thick:2, width:2, price: 1.00},
-        {thick:2, width:4, price: 0.80},
-        {thick:2, width:6, price: 0.80},
-        {thick:2, width:8, price: 0.80},
-        {thick:2, width:10, price: 0.90},
-        {thick:2, width:12, price: 0.90},
-        {thick:4, width:4, price: 0.80},
-        {thick:4, width:6, price: 0.80},
-        {thick:4, width:8, price: 0.80},
-        {thick:4, width:10, price: 1.10},
-        {thick:4, width:12, price: 1.10},
-        {thick:6, width:6, price: 0.80},
-        {thick:6, width:8, price: 1.00},
-        {thick:6, width:10, price: 1.20},
-        {thick:6, width:12, price: 1.10},
-        {thick:8, width:8, price: 1.00},
-        {thick:8, width:10, price: 1.30},
-        {thick:8, width:12, price: 1.20},
+        {thick:1, width:2},
+        {thick:1, width:4},
+        {thick:1, width:6},
+        {thick:1, width:8},
+        {thick:1, width:10},
+        {thick:1, width:12},
+        {thick:2, width:2},
+        {thick:2, width:4},
+        {thick:2, width:6},
+        {thick:2, width:8},
+        {thick:2, width:10},
+        {thick:2, width:12},
+        {thick:4, width:4},
+        {thick:4, width:6},
+        {thick:4, width:8},
+        {thick:4, width:10},
+        {thick:4, width:12},
+        {thick:6, width:6},
+        {thick:6, width:8},
+        {thick:6, width:10},
+        {thick:6, width:12},
+        {thick:8, width:8},
+        {thick:8, width:10},
+        {thick:8, width:12},
       ],
       lengths: [8, 10, 12, 14, 16, 18, 20, 22, 24],
       collapses: [{
           title: 'Rough Cut Full Dimensions',
           species: [
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
           ],
           additionalNote: ''
         },
         {
           title: 'Title 2',
           species: [
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
           ],
           additionalNote: '',
           text: 'Text 2'
@@ -176,14 +178,14 @@ export default {
         {
           title: 'Title 3',
           species: [
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
-            {species: '', dimension: '', length: '', quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
+            {species: '', dimension: -1, length: -1, quantity: 0, price: 0},
           ],
           additionalNote: '',
           text: 'Text 3'
@@ -211,11 +213,11 @@ export default {
     getSubTotal(specs) {
       let val = 0;
       specs.forEach(item => {
-        if(item.dimension) {
-          val += item.dimension*item.quantity
+        if(item.dimension>=0 && item.length>=0) {
+          val += this.dimensions[item.dimension].width * this.dimensions[item.dimension].thick * item.length * item.quantity / 12
         }        
       });
-      return val;
+      return Math.round(val*100)/100;
     }
   }
 

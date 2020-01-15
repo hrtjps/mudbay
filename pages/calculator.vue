@@ -119,7 +119,7 @@
           <div class="column is-2">
             <div class="columns is-multiline">
               <div class="column is-12">
-                <h5>7” x 10' x 2”</h5>
+                <h5>{{thick}}” x {{length1}}' x {{width}}”</h5>
               </div>
               <div class="column is-12">
                 <h5>Divided by 12</h5>
@@ -127,7 +127,7 @@
             </div>
           </div>
           <div class="column is-2 board_answer">
-            <h5>= 11.67 bd.ft</h5>
+            <h5>= {{Math.round(((this.width*this.length1*this.thick)/12)*100)/100}} bd.ft</h5>
           </div>
           <div class="column is-1">
             <h5>OR</h5>
@@ -135,7 +135,7 @@
           <div class="column is-2">
             <div class="columns is-multiline">
               <div class="column is-12">
-                <h5>7” x 120” x 2”</h5>
+                <h5>{{thick}}” x {{length2}}” x {{width}}”</h5>
               </div>
               <div class="column is-12">
                 <h5>Divided by 144</h5>
@@ -143,7 +143,7 @@
             </div>
           </div>
           <div class="column is-2 board_answer">
-            <h5>= 11.67 bd.ft</h5>
+            <h5>= {{Math.round(((this.width*this.length2*this.thick)/144)*100)/100}} bd.ft</h5>
           </div>
         </div>
       </div>
@@ -189,7 +189,7 @@ export default {
     calculate() {
       this.result1 = Math.round(((this.width*this.length1*this.thick)/12)*100)/100;
       this.result2 = Math.round(((this.width*this.length1*this.thick)/144)*100)/100;
-      this.$refs['result'].innerText = this.result1 + 'bd.ft  &  ' + this.result2 + 'bd.ft';
+      // this.$refs['result'].innerText = this.result1 + 'bd.ft  &  ' + this.result2 + 'bd.ft';
     },
     clear() {
       console.log(this.$refs);
