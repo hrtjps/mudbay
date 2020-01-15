@@ -82,6 +82,19 @@
                     </div>
                   </div>
                 </div>
+                <div class="column is-12">
+                  <div class="columns">
+                    <div class="column is-8">
+                      <h4>*Please Allow 24-48 Hours for Mud Bay Lumber Co. to Verify Your Quote</h4>
+                    </div>
+                    <div class="column has-text-right">
+                      <h4>Sub-Total: ${{getSubTotal(collapse.species)}}</h4>
+                    </div>
+                  </div>
+                </div>
+                <textarea class="column is-12" v-model="collapse.additionalNote" 
+                  placeholder="Tell Us Any Additional Notes That May Pertain to Your Project:"
+                  rows="8"></textarea>
               </div>
             </div>
           </b-collapse>
@@ -193,6 +206,18 @@ export default {
           message: res.response.data
         });
       });
+  },
+  methods: {
+    getSubTotal(specs) {
+      let val = 0;
+      specs.forEach(item => {
+        if(item.dimension) {
+          val += item.dimension*item.quantity
+        }        
+      });
+      return val;
+    }
   }
+
 }
 </script>
