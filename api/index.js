@@ -27,7 +27,7 @@ async function createPDF(d) {
       if(el.quantity>0) {
         data +="<div>dimension: "+ element.dimensions[el.dimension].dimension
           + ", length: " + el.length
-          + ", quantity: " + el.quantity 
+          + "', quantity: " + el.quantity 
           + ", prices: $" + Math.round(element.dimensions[el.dimension].prices[el.length] * el.quantity *100)/100
           + "</div>"
       }
