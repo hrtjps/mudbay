@@ -73,6 +73,7 @@ module.exports = {
     // 'redirect-ssl',
     // Will register file from project api directory to handle /api/* requires
     bodyParser.json(),
-    { path: '/api/download-pdf', handler: '~/api/index.js' }
+    { path: '/api/download-pdf', handler: '~/api/index.js' },
+    { path: '/api/mail', handler: '~/api/mail.js' }
   ]
 }

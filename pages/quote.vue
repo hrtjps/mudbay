@@ -415,6 +415,10 @@ export default {
     },
     async submitCutList() {
       console.log('submit cut list');
+      this.$axios.$post('api/mail', {bodyData: this.collapses, user: this.form})
+        .then((res)=> {
+          console.log(res);
+        })
     }
   }
 
