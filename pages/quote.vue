@@ -394,7 +394,7 @@ export default {
     },
     downloadPdf() {
       this.$axios.$post('api/download-pdf',
-        {bodyData: 'template data format'}, 
+        {bodyData: this.collapses}, 
         {
           responseType: 'arraybuffer',
           headers: {
@@ -415,7 +415,6 @@ export default {
     },
     async submitCutList() {
       console.log('submit cut list');
-
     }
   }
 

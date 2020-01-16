@@ -17,10 +17,26 @@ export default async function (req, res, next) {
   }
 }
 
-async function createPDF(data) {
+async function createPDF(d) {
   var templateHtml = fs.readFileSync(path.join(process.cwd(), 'server/pdf_template.html'), 'utf8');
-  var template = handlebars.compile(templateHtml);
+  var data="";
   console.log(data)
+  d.bodyData.forEach(element => {
+    data +="<h2>"+element.title + "</h2>"
+    element.species.forEach(el => {
+      if(el.quantity>0) {
+        data +="<div>dimension: "+ element.dimensions[el.dimension].dimension
+          + ", length: " + el.length
+          + ", quantity: " + el.quantity 
+          + ", prices: $" + Math.round(element.dimensions[el.dimension].prices[el.length] * el.quantity *100)/100
+          + "</div>"
+      }
+
+    })
+    
+  });
+  var template = handlebars.compile(templateHtml+data+"</body></html>");
+  
   var html = template(data);
 
 	var milis = new Date();
