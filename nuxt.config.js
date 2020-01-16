@@ -1,4 +1,4 @@
-
+const bodyParser = require('body-parser')
 module.exports = {
   mode: 'universal',
   /*
@@ -67,5 +67,12 @@ module.exports = {
     */
     extend (config, ctx) {
     }
-  }
+  },  
+  serverMiddleware: [
+    // Will register redirect-ssl npm package
+    // 'redirect-ssl',
+    // Will register file from project api directory to handle /api/* requires
+    bodyParser.json(),
+    { path: '/api/download-pdf', handler: '~/api/index.js' }
+  ]
 }

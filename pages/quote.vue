@@ -143,10 +143,10 @@
         </div>
         
         <div class="column is-6">
-          <button>DOWNLOAD MY CUT-LIST</button>
+          <button @click="downloadPdf()">DOWNLOAD MY CUT-LIST</button>
         </div>
         <div class="column is-6">
-          <button>SUBMIT MY CUT-LIST</button>
+          <button @click="submitCutList()">SUBMIT MY CUT-LIST</button>
         </div>
         <div class="column is-12">
           *Please note: This is our best estimation only, please allow 24-48 hours for Mud Bay Lumber Co. to verify your quote should you decide to submit your cut-list.
@@ -390,6 +390,31 @@ export default {
       } else {
         item.quantity = 0;
       }
+
+    },
+    downloadPdf() {
+      this.$axios.$post('api/download-pdf',
+        {bodyData: 'template data format'}, 
+        {
+          responseType: 'arraybuffer',
+          headers: {
+            'Accept': 'application/pdf'
+          }
+      })
+      .then((res)=> {
+        const blob = new Blob([res], {type: 'application/pdf'})
+        const link = document.createElement('a')
+        const url = window.URL.createObjectURL(blob)
+        link.href = url;
+        link.download = `cut-list.pdf`
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.open(url)
+      })
+    },
+    async submitCutList() {
+      console.log('submit cut list');
 
     }
   }
