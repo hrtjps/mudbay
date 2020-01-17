@@ -143,6 +143,12 @@
         </div>
         
         <div class="column is-6">
+          
+          <recaptcha
+            @error="onError"
+            @success="onSuccess"
+            @expired="onExpired"
+          />
           <button @click="downloadPdf()">DOWNLOAD MY CUT-LIST</button>
         </div>
         <div class="column is-6">
@@ -161,7 +167,6 @@
 
 <script>
 import storyblokLivePreview from "@/mixins/storyblokLivePreview";
-
 export default {
   data() {
     return {
@@ -414,13 +419,26 @@ export default {
       })
     },
     async submitCutList() {
-      console.log('submit cut list');
-      this.$axios.$post('api/mail', {bodyData: this.collapses, user: this.form})
-        .then((res)=> {
-          console.log(res);
-        })
+      console.log('click submit');
+      try {
+        const token = await this.$recaptcha.getResponse()
+        await this.$recaptcha.reset()
+      } catch (error) {
+        console.log('Login error:', error)
+      }
+    },
+    onError (error) {
+      console.log('Error happened:', error)
+    },
+    onSuccess (token) {
+        this.$axios.$post('api/mail', {bodyData: this.collapses, user: this.form})
+          .then((res)=> {
+            console.log(res);
+          })
+    },
+    onExpired () {
+      console.log('Expired')
     }
   }
-
 }
 </script>

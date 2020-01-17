@@ -12,7 +12,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     script: [
-      { src: '//app.storyblok.com/f/storyblok-latest.js'}
+      { src: '//app.storyblok.com/f/storyblok-latest.js'},
+      { src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -43,6 +44,13 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    [
+      '@nuxtjs/recaptcha', {
+        hideBadge: true,
+        siteKey: '6Lf7I9AUAAAAAFAhGT9eQKb2O2RmZRxPinz6sb7w',
+        version:2
+      }
+    ],
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
     // Doc: https://axios.nuxtjs.org/usage

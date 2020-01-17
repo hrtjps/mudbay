@@ -179,7 +179,6 @@ export default {
         };
       })
       .catch(res => {
-        console.log(res)
         context.error({
           statusCode: res.response.status,
           message: res.response.data
@@ -199,7 +198,6 @@ export default {
       }
     },
     clear() {
-      console.log(this.$refs);
       this.width = 0;
       this.thick = 1;
       this.length1 = 0;

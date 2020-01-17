@@ -20,7 +20,6 @@ export default async function (req, res, next) {
 async function createPDF(d) {
   var templateHtml = fs.readFileSync(path.join(process.cwd(), 'server/pdf_template.html'), 'utf8');
   var data="";
-  console.log(data)
   d.bodyData.forEach(element => {
     data +="<h2>"+element.title + "</h2>"
     element.species.forEach(el => {

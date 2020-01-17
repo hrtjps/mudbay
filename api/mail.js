@@ -4,10 +4,8 @@ var handlebars = require("handlebars");
 var path = require("path");
 
 export default async function (req, res, next) {
-  console.log(req.body)
   let testAccount = await nodemailer.createTestAccount();
   // create reusable transporter object using the default SMTP transport
-  console.log(testAccount);
   let transporter = nodemailer.createTransport({
     host: "smtp.ethereal.email",
     port: 587,
@@ -20,7 +18,6 @@ export default async function (req, res, next) {
 
   var templateHtml = fs.readFileSync(path.join(process.cwd(), 'server/pdf_template.html'), 'utf8');
   var data="";
-  console.log(data)
   req.body.bodyData.forEach(element => {
     data +="<h2>"+element.title + "</h2>"
     element.species.forEach(el => {
@@ -36,7 +33,6 @@ export default async function (req, res, next) {
   var template = handlebars.compile(templateHtml+data+"</body></html>");
   
   var html = template(data);
-  console.log(html)
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
@@ -46,9 +42,6 @@ export default async function (req, res, next) {
     text: req.body.user.timeline, // plain text body
     html: html // html body
   });
-
-  console.log("Message sent: %s", info.messageId);
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   
   res.json({
     status: "success",
