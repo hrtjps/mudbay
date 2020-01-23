@@ -11,18 +11,11 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.9.3",
-    "@nuxtjs/recaptcha": "^0.6.2",
-    "body-parser": "^1.19.0",
+    "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
-    "fs": "0.0.1-security",
-    "handlebars": "^4.7.2",
-    "nodemailer": "^6.4.2",
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.2",
-    "path": "^0.12.7",
-    "puppeteer": "^2.0.0",
     "storyblok-nuxt": "^1.0.2"
   },
   "devDependencies": {

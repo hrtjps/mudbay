@@ -21,18 +21,19 @@ $size-6: 1.125rem;
 
 @import "/components/abstract/mixins";
 
-@import "components/base/typography";
+@import "/components/base/typography";
 
 
 
 @import "/components/components/heroimgs";
 @import "/components/components/navigation";
 @import "/components/components/footer";
-@import "components/components/cards";
+@import "/components/components/cards";
 
 
 
-@import "components/pages/index";
-@import "components/pages/products";
-@import "components/pages/about";
-@import "components/pages/calculator";
+@import "/components/pages/index";
+@import "/components/pages/products";
+@import "/components/pages/about";
+@import "/components/pages/calculator";
+@import "/components/pages/quote";

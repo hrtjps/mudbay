@@ -164,7 +164,7 @@ export default {
       result2: 0,
       story: {
         content: {}
-      },      
+      },
     }
   },
   mixins: [storyblockLivePreview],
@@ -191,10 +191,10 @@ export default {
         this.result1 = Math.round(((this.width*this.length1*this.thick)/12)*100)/100;
         this.$refs['result'].innerText = this.result1 + 'bd.ft';
       } else if(this.length2!==0){
-        this.result2 = Math.round(((this.width*this.length2*this.thick)/144)*100)/100;      
+        this.result2 = Math.round(((this.width*this.length2*this.thick)/144)*100)/100;
         this.$refs['result'].innerText = this.result2 + 'bd.ft';
       } else {
-        this.$refs['result'].innerText = '';  
+        this.$refs['result'].innerText = '';
       }
     },
     clear() {

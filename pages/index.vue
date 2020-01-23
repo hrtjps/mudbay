@@ -40,7 +40,7 @@
               <span class="is-class-6">SEE ALL</span>
             </h3>
           </div>
-          <div class="column is-6-tablet is-3-fullhd" v-editable="product" 
+          <div class="column is-6-tablet is-3-fullhd" v-editable="product"
             v-for="(product, key) in story.content.ProductSection" :key="key">
             <div class="card product-img" :id="product.id"
               :style="{'background-image': 'url(' + product.image + ')'}"
@@ -93,7 +93,7 @@
       <div class="columns">
         <div class="column is-12 has-text-centered">
           <h1>
-            <a href="#">TRY OUR ONLINE CALCULATOR ></a>
+            <a href="/calculator">TRY OUR ONLINE CALCULATOR ></a>
           </h1>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default {
   data: () => ({
     story: { content: {} },
     carousel: 0,
-    animated: "fade",
+    animated: "slides",
     arrow: false,
     arrowBoth: false,
     arrowHover: false,

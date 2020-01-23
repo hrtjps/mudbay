@@ -166,6 +166,20 @@
   }
 }
 
+.quote-hero {
+  margin-top: -211px;
+  background-size: cover;
+  @include mobile {
+    margin-top: 0;
+  }
+  @include desktop {
+    margin-top: -100px;
+  }
+  @include fullhd {
+    margin-top: -211px;
+  }
+}
+
 
 .process-hero {
   @include heroimg('~assets/img/process_hero.jpg');

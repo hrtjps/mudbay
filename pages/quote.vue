@@ -30,31 +30,29 @@
         <div class="column is-12">
           <b-collapse class="card" v-for="(collapse, index) of collapses" :key="index" :open="isOpen == index" @open="isOpen = index">
             <div slot="trigger" slot-scope="props" class="card-header" role="button">
-              <p class="card-header-title">
-                {{ collapse.title }}
-              </p>
+              
               <a class="card-header-icon">
                 <b-icon :icon="props.open ? 'menu-down' : 'menu-up'">
                 </b-icon>
               </a>
+              <div class="card-header-title">
+                <div>{{ collapse.title }}</div>
+                <div class="price">Price</div>
+              </div>
             </div>
             <div class="card-content">
               <div class="content">
-                <div class="column is-12" v-for="(item, key) in collapse.species" :key="key">
-                  <div class="columns">
-                    <div class="column is-1">
-                      <h6>Species</h6>
-                    </div>
-                    <div class="column is-1" v-if="collapse.title !== 'Board & Batten Siding'">
+                <div class="cut-item" v-for="(item, key) in collapse.species" :key="key">
+                  <div class="property">
+                    <div class="property-group" v-if="collapse.title !== 'Board & Batten Siding'">
+                      <label>Species: </label>
                       <select v-model="item.species" @change="changeQuantity(item)">
                         <option value="" disabled>Select an Option</option>
                         <option :value="spec" v-for="(spec, k1) in collapse.constSpecies" :key="k1">{{spec}}</option>
                       </select>
                     </div>
-                    <div class="column is-1" v-if="collapse.title !== 'Board & Batten Siding'">
-                      <h6>Dimension:</h6>
-                    </div>
-                    <div class="column is-1">
+                    <div class="property-group" >
+                      <label >{{collapse.title !== 'Board & Batten Siding'?"Dimension:":"Species:"}}</label>
                       <select v-model="item.dimension" @change="changeQuantity(item)" v-if="collapse.title !== 'Board & Batten Siding'">
                         <option :value="-1" disabled>Select an Option</option>
                         <option :value="k1" v-for="(d, k1) in collapse.dimensions" :key="k1">{{d.dimension}}</option>
@@ -64,41 +62,34 @@
                         <option :value="k1" v-for="(d, k1) in collapse.dimensions" :key="k1">{{d.species}}</option>
                       </select>
                     </div>
-                    <div class="column is-1">
-                      <h6>Length:</h6>
-                    </div>
-                    <div class="column is-1">
+                    <div class="property-group">
+                      <label>Length:</label>
                       <select v-model="item.length" @change="changeQuantity(item)">
                         <option :value="-1" disabled>Select an Option</option>
                         <option :value="k1" v-for="(spec, k1) in lengths" :key="k1">{{spec}}’</option>
                       </select>
                     </div>
-                    <div class="column is-1">
-                      <h6>Quantity:</h6>
-                    </div>
-                    <div class="column is-2">
-                      <b-field>
-                        <b-numberinput v-model="item.quantity"></b-numberinput>
-                      </b-field>
-                    </div>
-                    <div class="column 1">
-                      <h6 v-if="item.dimension>=0 && item.length>=0 ">${{Math.round(collapse.dimensions[item.dimension].prices[item.length]*item.quantity * 100)/100}}</h6>
+                    <div class="property-group">
+                      <label>Quantity:</label>
+                      <!-- <b-field> -->
+                        <b-numberinput v-model="item.quantity" ></b-numberinput>
+                      <!-- </b-field> -->
                     </div>
                   </div>
-                </div>
-                <div class="column is-12">
-                  <div class="columns">
-                    <div class="column is-8">
-                      <h4>*Please Allow 24-48 Hours for Mud Bay Lumber Co. to Verify Your Quote</h4>
-                    </div>
-                    <div class="column has-text-right">
-                      <h4>Sub-Total: ${{getSubTotal(collapse.species, collapse.dimensions)}}</h4>
-                    </div>
+                  <div class="price">
+                    <h6 v-if="item.dimension>=0 && item.length>=0 ">${{Math.round(collapse.dimensions[item.dimension].prices[item.length]*item.quantity * 100)/100}}</h6>
+                    <h6 v-else>$0</h6>
                   </div>
                 </div>
-                <textarea class="column is-12" v-model="collapse.additionalNote" 
-                  placeholder="Tell Us Any Additional Notes That May Pertain to Your Project:"
-                  rows="8"></textarea>
+                <div class="cut-item-summary">
+                  <div class="result">
+                    <div>*Please Allow 24-48 Hours for Mud Bay Lumber Co. to Verify Your Quote</div>
+                    <div class="sub-total">Sub-Total: ${{getSubTotal(collapse.species, collapse.dimensions)}}</div>
+                  </div>
+                  <textarea class="additional-note" v-model="collapse.additionalNote"
+                    placeholder="Tell Us Any Additional Notes That May Pertain to Your Project:"
+                    rows="8"></textarea>
+                </div>
               </div>
             </div>
           </b-collapse>
@@ -106,18 +97,18 @@
       </div>
     </div>
   </section>
-  
-  <section class="quote--rough-cut-full">
+
+  <section class="quote--contact-form">
     <div class="container">
       <div class="columns is-multiline">
         <div class="column is-12">
           <h3 class="is-size-4">
             Customer Information
           </h3>
-          <div>
-            Please include your information below before submitting your cut-list to Mud Bay Lumber Co. so you can be contacted with any questions. 
+          <p>
+            Please include your information below before submitting your cut-list to Mud Bay Lumber Co. so you can be contacted with any questions.
             <br>Or you can download your quote below.
-          </div>
+          </p>
         </div>
         <div class="column is-4">
           <div class="label">Name</div>
@@ -131,33 +122,32 @@
           <div class="label">Phone</div>
           <div ><input v-model="form.phone"></div>
         </div>
-        
+
         <div class="column is-12">
           <div class="label">What are you building?</div>
           <div ><input v-model="form.building"></div>
         </div>
-        
+
         <div class="column is-12">
           <div class="label">Does your project have a timeline?</div>
           <div ><input v-model="form.timeline"></div>
         </div>
-        
-        <div class="column is-6">
-          
+        <div class="column is-12">
           <recaptcha
             @error="onError"
             @success="onSuccess"
             @expired="onExpired"
+            class="recapture"
           />
-          <button @click="downloadPdf()">DOWNLOAD MY CUT-LIST</button>
         </div>
-        <div class="column is-6">
+        <div class="form-buttons">
+          <button @click="downloadPdf()">DOWNLOAD MY CUT-LIST</button>
           <button @click="submitCutList()">SUBMIT MY CUT-LIST</button>
         </div>
-        <div class="column is-12">
+        <div class="column is-12 please-note">
           *Please note: This is our best estimation only, please allow 24-48 hours for Mud Bay Lumber Co. to verify your quote should you decide to submit your cut-list.
           <br>
-          Should you submit your cut-list, Mud Bay Lumber Co. will contact you with any questions, verifications, availability and deposit. 
+          Should you submit your cut-list, Mud Bay Lumber Co. will contact you with any questions, verifications, availability and deposit.
         </div>
       </div>
     </div>
@@ -385,7 +375,7 @@ export default {
       specs.forEach(item => {
         if(item.dimension>=0 && item.length>=0) {
           val += dimensions[item.dimension].prices[item.length]*item.quantity
-        }        
+        }
       });
       return Math.round(val*100)/100;
     },
@@ -399,7 +389,7 @@ export default {
     },
     downloadPdf() {
       this.$axios.$post('api/download-pdf',
-        {bodyData: this.collapses}, 
+        {bodyData: this.collapses},
         {
           responseType: 'arraybuffer',
           headers: {

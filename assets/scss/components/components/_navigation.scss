@@ -1,3 +1,5 @@
+
+
 .navbar {
   background-color: transparent;
 
@@ -23,9 +25,8 @@
       background-color: transparent;
       color: #423629;
     }
-    &:active {
-      background-color: transparent;
-      color: white;
+    &:focus {
+      color: #423629;
     }
   }
 }
