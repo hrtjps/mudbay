@@ -27,6 +27,10 @@
     margin-bottom: 20px;
     .card-header-icon {
       color: #47594a;
+      .mdi-24px.mdi:before {
+        font-size: 60px;
+
+      }
     }
     .card-header-title {
       display: flex;
