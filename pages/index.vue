@@ -21,7 +21,7 @@
                   <h2 class="is-size-6">{{ carousel.subtitle }}</h2>
                   <h1>{{ carousel.title }}</h1>
                   <h5 class="is-size-5-tablet is-size-6-mobile">{{ carousel.description }}</h5>
-                  <a href="#">EXPLORE ></a>
+                  <a :href="carousel.link">{{ carousel.explore }}</a>
                 </div>
               </div>
             </div>
@@ -37,7 +37,7 @@
           <div class="column is-12">
             <h3 class="is-size-4">
               OUR FEATURED PRODUCTS >
-              <span class="is-class-6">SEE ALL</span>
+              <span class="is-class-6"> <a href="/mainproducts">SEE ALL</a></span>
             </h3>
           </div>
           <div class="column is-6-tablet is-3-fullhd" v-editable="product"
@@ -46,7 +46,7 @@
               :style="{'background-image': 'url(' + product.image + ')'}"
              >
               <div class="card-content">
-                <a href="#">LEARN MORE ></a>
+                <a :href="product.link">LEARN MORE ></a>
                 <h1 class="is-size-4-tablet is-size-3-desktop">{{ product.title }}</h1>
                 <p class="is-size-6">{{ product.content }}</p>
               </div>
@@ -75,16 +75,16 @@
     <!-- ABOUT SECTION -->
     <section class="index--about">
       <div class="container is-fluid has-background-success">
-        <div class="columns is-multiline" v-editable="story.content.AboutThePeopleSection[0]">
+        <div class="columns is-multiline" v-editable="story.content.PeopleSection[0]">
           <div class="column is-7">
             <h1>ABOUT THE PEOPLE</h1>
             <p class="is-size-5-tablet is-size-6-mobile"               >
-              {{story.content.AboutThePeopleSection[0].aboutPeople}}
+              {{story.content.PeopleSection[0].aboutPeople}}
             </p>
             <a href="#" class="is-size-4">READ OUR FULL STORY ></a>
           </div>
           <div class="column is-5">
-            <img :src="story.content.AboutThePeopleSection[0].image" alt />
+            <img :src="story.content.PeopleSection[0].image" alt />
           </div>
         </div>
       </div>
@@ -99,25 +99,16 @@
       </div>
     </div>
     <!-- END ABOUT SECTION -->
-    <!-- INSTAGRAM SECTION -->
+    <!-- FACEBOOK SECTION -->
     <section class="index--instagram">
       <div class="container">
         <div class="columns is-multiline">
           <div class="column is-12 has-text-centered">
             <h4 class="is-size-3">SEE WHAT WE’RE UP TO</h4>
           </div>
-          <div class="column is-3">
-            <!-- REPLACE WITH GRIDDED API -->
-          </div>
-          <div class="column is-3">
-            <!-- REPLACE WITH GRIDDED API -->
-          </div>
-          <div class="column is-3">
-            <!-- REPLACE WITH GRIDDED API -->
-          </div>
-          <div class="column is-3">
-            <!-- REPLACE WITH GRIDDED API -->
-          </div>
+          <script src="https://assets.juicer.io/embed.js" type="text/javascript"></script>
+          <link href="https://assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
+          <ul class="juicer-feed" data-feed-id="949737365207127" data-per="10"></ul>
         </div>
       </div>
     </section>
@@ -139,7 +130,7 @@ export default {
     pauseHover: false,
     pauseInfo: false,
     indicator: false,
-    interval: 3000,
+    interval: 5000,
   }),
   mixins: [storyblockLivePreview],
   asyncData(context) {

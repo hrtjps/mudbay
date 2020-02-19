@@ -13,7 +13,7 @@ module.exports = {
     ],
     script: [
       { src: '//app.storyblok.com/f/storyblok-latest.js'},
-      { src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true}
+      // { src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -22,18 +22,21 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
+  vendor: ["aos"],
   loading: { color: '#fff' },
   /*
   ** Global CSS
   */
   css: [
+    'aos/dist/aos.css',
     '@/assets/scss/app.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/components'
+    '~/plugins/components',
+    {src: "~/plugins/aos", ssr: false}
   ],
   /*
   ** Nuxt.js dev-modules
@@ -47,7 +50,7 @@ module.exports = {
     [
       '@nuxtjs/recaptcha', {
         hideBadge: true,
-        siteKey: '6Lf7I9AUAAAAAFAhGT9eQKb2O2RmZRxPinz6sb7w',
+        siteKey: '6LchbdgUAAAAAK_RYFHRJax0mCOSGFZW4T7gXPPI',
         version:2
       }
     ],

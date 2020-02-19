@@ -1,0 +1,519 @@
+.boardcare {
+  &--header {
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+    h3 {
+      color: $orange;
+      @include mobileport {
+        font-size: 1.9rem !important;
+      }
+    }
+  }
+  // end boardcare--header
+
+  &--lower {
+    position: relative;
+
+    .container {
+      @include tablet-only {
+        max-width: 800px;
+      }
+      @include fullhd {
+        max-width: 1300px;
+      }
+      @include xxlarge {
+        max-width: 1700px;
+      }
+    }
+
+    p {
+      color: $lightgreen;
+      font-family: acumin-pro;
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      @include mobile {
+        font-size: 1.15rem;
+      }
+      @include tablet {
+        font-size: 1.35rem;
+      }
+      @include xxlarge {
+        font-size: 1.75rem;
+      }
+    }
+
+    .is-3-desktop,
+    .is-5-desktop {
+      margin-top: 80px;
+      @include mobile {
+        margin-top: 30px;
+      }
+    }
+
+    .is-8 {
+      margin-top: -19px;
+      width: 59% !important;
+      @include mobileport {
+        width: 100% !important;
+      }
+      @include mobile {
+        margin-top: 20px;
+      }
+    }
+
+    .is-offset-4 {
+      margin-left: 27% !important;
+      @include mobile {
+        margin-left: 20% !important;
+      }
+      @include mobileport {
+        margin-left: 0% !important;
+      }
+      @include tablet {
+        margin-left: 15% !important;
+      }
+      @include desktop {
+        margin-left: 30% !important;
+      }
+      @include widescreen {
+        margin-left: 25% !important;
+      }
+      @include xxlarge {
+        margin-left: 27% !important;
+      }
+    }
+    // ARROW ONE
+    &__arrow_one {
+      position: absolute;
+      left: 46px;
+      top: 491px;
+      @include mobileport {
+        display: none;
+      }
+      @include mobile {
+        left: 19px;
+        top: 211px;
+
+        img {
+          max-width: 40%;
+        }
+      }
+      // end mobile
+      @include tablet {
+        left: 19px;
+        top: 242px;
+
+        img {
+          max-width: 60%;
+        }
+      } // end tablet
+      @include desktop {
+        top: 245px;
+        img {
+          max-width: 80%;
+        }
+      }
+      @include widescreen {
+        top: 265px;
+        img {
+          max-width: 100%;
+        }
+      }
+      @include fullhd {
+        left: 27px;
+        top: 331px;
+      }
+      @include xxlarge {
+        left: 46px;
+        top: 491px;
+
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+    // ARROW TWO
+    &__arrow_two {
+      position: absolute;
+      left: 416px;
+      top: 503px;
+      @include mobileport {
+        display: none;
+      }
+      @include mobile {
+        left: 426px;
+        top: 203px;
+
+        img {
+          max-width: 50%;
+        }
+      } // end mobile
+      @include tablet {
+        left: 542px;
+        top: 238px;
+
+        img {
+          max-width: 60%;
+        }
+      } // end tablet
+
+      @include desktop {
+        top: 290px;
+        left: 450px;
+        img {
+          max-width: 80%;
+        }
+      } // end desktop
+
+      @include widescreen {
+
+        left: 540px;
+        top: 300px;
+
+        img {
+          max-width: 90%;
+        }
+      } // end widescreen
+      @include fullhd {
+        left: 617px;
+        top: 358px;
+      }
+      @include xxlarge {
+        left: 416px;
+        top: 503px;
+
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+    // ARROW THREE
+    &__arrow_three {
+      position: absolute;
+      right: 70px;
+      top: 700px;
+      @include mobileport {
+        display: none;
+      }
+      @include mobile {
+        top: 287px;
+        right: 200px;
+
+        img {
+          max-width: 50%;
+        }
+      } //end mobile
+      @include tablet {
+        right: 250px;
+        top: 310px;
+
+        img {
+          max-width: 70%;
+        }
+      } // end tablet
+
+      @include desktop {
+        right: 0;
+        top: 400px;
+
+        img {
+          max-width: 90%;
+        }
+      } // end desktop
+
+      @include widescreen {
+        top: 490px;
+      }
+
+      @include fullhd {
+        top: 542px;
+        right: 23px;
+        img {
+          max-width: 100%;
+        }
+      }
+
+      @include xxlarge {
+        right: 70px;
+        top: 700px;
+
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+// end boardcare
+
+// INSTALLATION SIDING
+
+
+.siding-install {
+
+  &--installation {
+    margin-top: 80px;
+
+    .is-7-fullhd {
+      padding-left: 45px;
+      @include mobile {
+        margin-left: 0;
+      }
+    }
+
+    h1 {
+      color: $treegreen;
+    }
+
+    h2 {
+      font-weight: 700;
+    }
+
+    h2,
+    p {
+      color: $lightgreen;
+      font-size: 1.75rem;
+      @include desktop-only {
+        font-size: 1.25rem;
+      }
+    }
+
+    h3 {
+      color: $orange;
+      margin-bottom: 100px;
+    }
+
+    &__stepone {
+      position: relative;
+    }
+
+    .stepone-arrow {
+      position: absolute;
+      top: 530px;
+      left: 540px;
+      @include desktop-only {
+        width: 20%;
+        top: 370px;
+        left: 367px;
+      }
+      @include widescreen-only {
+        width: 23%;
+        top: 450px;
+        left: 435px;
+      }
+      @include fullhd {
+        top: 430px;
+        left: 428px;
+      }
+      @include xxlarge {
+        top: 530px;
+        left: 540px;
+      }
+    }
+
+    .stepone-instructionone {
+      margin-top: 80px;
+      @include touch {
+        margin-top: 25px;
+      }
+    }
+
+    .stepone-instructiontwo {
+      margin-top: 170px;
+      padding-left: 60px;
+      @include touch {
+        margin-top: 25px;
+        padding-left: 0;
+      }
+      @include desktop-only {
+        margin-top: 90px;
+        padding-left: 70px;
+      }
+
+      @include widescreen-only {
+        margin-top: 90px;
+        padding-left: 90px;
+      }
+
+      @include fullhd {
+        margin-top: 50px;
+      }
+
+      @include xxlarge {
+        margin-top: 170px
+      }
+
+    }
+
+    &__steptwo {
+      position: relative;
+      margin-top: 145px;
+    }
+
+    .steptwo-arrow {
+      position: absolute;
+      top: 340px;
+      left: 520px;
+
+      @include desktop-only {
+        width: 17%;
+        top: 258px;
+        left: 440px;
+      }
+      @include widescreen-only {
+        width: 17%;
+        top: 310px;
+        left: 440px;
+      }
+      @include fullhd {
+        top: 310px;
+        width: 13%;
+      }
+      @include xxlarge {
+        width: auto;
+        top: 340px;
+      }
+    }
+
+    .steptwo-arrow-two {
+      position: absolute;
+      top: 550px;
+      left: 500px;
+      @include desktop-only {
+        width: 20%;
+        top: 420px;
+        left: 410px;
+      }
+      @include widescreen-only {
+        width: 20%;
+        top: 490px;
+        left: 450px;
+      }
+      @include fullhd {
+        top: 470px;
+        left: 470px;
+        width: 18%;
+      }
+      @include xxlarge {
+        width: auto;
+        top: 550px;
+        left: 500px;
+      }
+    }
+
+    .steptwo-instructionone {
+      margin-top: 80px;
+      padding-right: 400px;
+      text-align: center;
+      font-weight: 700;
+      margin-left: -19px;
+      @include touch {
+        padding-right: 0;
+        text-align: left;
+        margin-left: 0;
+      }
+      @include desktop-only {
+        padding-right: 0;
+        margin-top: 40px;
+      }
+      @include widescreen-only {
+        padding-right: 0;
+        margin-top: 10px;
+      }
+      @include fullhd {
+        margin-top: 11px;
+        padding-right: 80px;
+      }
+      @include xxlarge {
+        margin-top: 80px;
+      }
+    }
+
+    .steptwo-instructiontwo {
+      margin-top: 170px;
+      padding-left: 100px;
+      font-weight: 700;
+      text-align: center;
+      padding-right: 200px;
+      @include touch {
+        padding-right: 0;
+        text-align: left;
+        margin-top: 25px;
+        padding-left: 0;
+      }
+      @include desktop-only {
+        margin-top: 100px;
+        padding-left: 70px;
+        padding-right: 0;
+      }
+      @include widescreen-only {
+        margin-top: 40px;
+        padding-left: 70px;
+        padding-right: 0;
+      }
+      @include fullhd {
+        margin-top: 60px;
+        padding-right: 50px;
+      }
+      @include xxlarge {
+        margin-top: 170px;
+        padding-right: 200px;
+      }
+    }
+
+    &__stepthree {
+      margin-top: 145px;
+    }
+
+
+    .stepthree {
+      p {
+        margin-top: 50px;
+        &:nth-of-type(3) {
+          font-weight: 700;
+        }
+        &:nth-of-type(4) {
+          font-weight: 700;
+        }
+
+        @include desktop-only {
+          margin-top: 15px;
+        }
+        @include widescreen-only {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    &__stepfour {
+      margin-top: 145px;
+    }
+
+    .step-four-description {
+      p {
+        margin-top: 50px;
+        &:last-child {
+          margin-top: 0px;
+        }
+        @include desktop-only {
+          margin-top: 15px;
+        }
+        @include widescreen-only {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    &__stepfive {
+      margin-top: 145px;
+    }
+
+    .step-five-description {
+      p {
+        margin-top: 25px;
+      }
+    }
+  }
+}

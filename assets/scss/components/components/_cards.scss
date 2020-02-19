@@ -6,119 +6,35 @@
   background-size: cover;
 }
 
-#rough-timber {
-  background: url('~assets/img/rough_timber_bg.jpg');
-  height: 42.438rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
-#board-siding {
-  background: url('~assets/img/batten_siding_bg.jpg');
-  height: 42.438rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#timber-frames {
-  background: url('~assets/img/timber_frames_bg.jpg');
-  height: 42.438rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#firewood {
-  background: url('~assets/img/firewood_bg.jpg');
-  height: 42.438rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-
-
-#rough-timber-products {
-  background: url('~assets/img/rough_timber_product_bg.jpg');
-  height: 56.188rem;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#board-siding-products {
-  @extend #rough-timber-products;
-  background: url('~assets/img/board_siding_product_bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-}
-
-#timber-frames-products {
-  @extend #rough-timber-products;
-  background: url('~assets/img/siding_product_bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 .product-item-card-img {
   height: 56.188rem;
   background-position: center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-}
-#firewood-products {
-  @extend #rough-timber-products;
-  background: url('~assets/img/firewood_product_bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 
-#woodworkers-products {
-  @extend #rough-timber-products;
-  background: url('~assets/img/woodworkers_product_bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 
-#birch-boards-products {
-  @extend #rough-timber-products;
-  background: url('~assets/img/birch_boards_bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  @include mobileport {
+    height: 40rem;
+  }
+
+  @include iphoneFive {
+    height: 30rem;
+  }
+  
+  @include tabletport {
+    height: 50rem;
+  }
+  @include widescreen-only {
+    height: 45rem;
+  }
 }
 
-#slabs-products {
-  @extend #rough-timber-products;
-  background: url('~assets/img/slabs_product_bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.card-content {
+  @include iphoneFive {
+    padding: 0.4rem;
+  }
+  @include mobileport {
+    padding: 0.8rem;
+  }
 }
-
-#cabin-package-20-products {
-  @extend #rough-timber-products;
-  background: url('~assets/img/cabin_20_product_bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#cabin-package-30-products {
-  @extend #rough-timber-products;
-  background: url('~assets/img/cabin_30_product_bg.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-
-
-// QUESTIONS ACCORDIAN

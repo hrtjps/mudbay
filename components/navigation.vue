@@ -18,12 +18,23 @@
         <b-navbar-item href="/process">
           PROCESS
         </b-navbar-item>
-        <b-navbar-item href="/people">
+        <b-navbar-item href="/about">
           PEOPLE
         </b-navbar-item>
-        <b-navbar-item href="/tool-chest">
-          TOOL CHEST
-        </b-navbar-item>
+        <b-navbar-dropdown label="Tool Chest" hoverable arrowless>
+            <b-navbar-item href="/calculator">
+                Board Calculator
+            </b-navbar-item>
+            <b-navbar-item href="/sidinginstall">
+                How To Install Siding
+            </b-navbar-item>
+            <b-navbar-item href="/boardcare">
+                How To Care For Your Boards
+            </b-navbar-item>
+            <b-navbar-item href="/common_questions">
+                Common Questions
+            </b-navbar-item>
+        </b-navbar-dropdown>
         <b-navbar-item href="/quote">
           QUOTE
         </b-navbar-item>

@@ -9,8 +9,8 @@
               <img src="~/assets/img/footer_logo.png" alt="">
             </div>
             <div class="column is-12">
-              <a href="#">info@mudbaylumber.com</a>
-            <br><a href="#">(907) 314-2038</a>
+              <a href="mailto: info@mudbaylumber.com">info@mudbaylumber.com</a>
+            <br><a href="tel: 9073142038">(907) 314-2038</a>
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@
             </div>
             <div class="column is-12 lower-nav">
               <a href="#" class="footer-home">HOME</a><span><a href="#">PRODUCTS</a></span><span><a href="#">PROCESS</a></span><span><a href="#">PEOPLE</a></span><span><a href="#">TOOL CHEST</a></span><span>
-                <a href="#">QUOTE</a></span><span><a href="#">MY LIST</a></span>
+                <a href="#">QUOTE</a></span>
             </div>
             <div class="column is-12">
               <h4>Mud Bay Lumber Co is proud to provide top-quality lumber products year round.</h4>

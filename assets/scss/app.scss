@@ -31,9 +31,58 @@ $size-6: 1.125rem;
 @import "/components/components/cards";
 
 
+.is-size-3 {
+  @include iphoneFive {
+    font-size: 1.8rem !important;
+  }
+  @include mobileport {
+    font-size: 2.10rem !important;
+  }
+
+  @include tabletport {
+    font-size: $size-3 !important;
+  }
+
+  @include widescreen-only {
+    font-size: 2.313rem !important;
+  }
+
+  @include xxlarge {
+    font-size: 3.45rem;
+  }
+}
+
+.is-size-6 {
+  @include mobileport {
+    font-size: 0.825rem !important;
+  }
+  @include iphoneFive {
+    font-size: 0.75rem !important;
+  }
+  @include tabletport {
+    font-size: $size-6 !important;
+  }
+}
+
+
+.is-size-4 {
+  @include iphoneFive {
+    font-size: 1.25rem !important;
+  }
+}
+
+.mdi-24px.mdi-set, .mdi-24px.mdi:before {
+  font-size: 50px;
+}
+
+.juicer-feed h1.referral {
+  display: none !important;
+}
 
 @import "/components/pages/index";
 @import "/components/pages/products";
 @import "/components/pages/about";
 @import "/components/pages/calculator";
 @import "/components/pages/quote";
+@import "/components/pages/process";
+@import "components/pages/installationcare";

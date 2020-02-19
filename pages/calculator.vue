@@ -39,12 +39,12 @@
                   </div>
                 </div>
               </div>
-              <div class="column is-4">
+              <div class="column is-3">
                   <div class="columns">
                     <div class="column is-3">
                       <h6>Width:</h6>
                     </div>
-                    <div class="column is-8">
+                    <div class="column is-9">
                         <input ref="width" type="number" v-model="width">
                     </div>
                   </div>
@@ -54,39 +54,46 @@
                   <div class="column is-3">
                     <h6>Length:</h6>
                   </div>
-                  <div class="column is-8">
+                  <div class="column is-7">
                     <input ref="length1" type="number" v-model="length1" @focus="length2=0">
-                    <span><h6>(feet)</h6></span>
+                  </div>
+                  <div class="column is-2">
+                    <h6>(feet)</h6>
                   </div>
                 </div>
               </div>
               <div class="column is-4">
                 <div class="columns">
-                  <div class="column is-3">
+                  <div class="column is-2">
                     <h6>Or:</h6>
                   </div>
-                  <div class="column is-8">
-                    <input ref="length2" type="number" v-model="length2" @focus="length1=0"><span><h6>(inches)</h6></span>
+                  <div class="column is-7">
+                    <input ref="length2" type="number" v-model="length2" @focus="length1=0">
+                  </div>
+                  <div class="column is-1">
+                    <h6>(inches)</h6>
                   </div>
                 </div>
               </div>
               <div class="column is-12">
                 <h6>Total: <span ref="result"></span></h6>
               </div>
-              <div class="column is-4">
-                <button class="btn calculate-btn" @click="calculate()">CALCULATE</button>
-              </div>
-              <div class="column is-4">
-                <button class="btn clear-btn" @click="clear()">CLEAR</button>
-              </div>
             </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-3">
+            <button class="btn calculate-btn" @click="calculate()">CALCULATE</button>
+          </div>
+          <div class="column is-3">
+            <button class="btn clear-btn" @click="clear()">CLEAR</button>
           </div>
         </div>
       </div>
     </section>
     <section class="calculator--handwritten">
       <div class="container">
-        <div class="columns is-multiline">
+        <div class="columns is-multiline upper-handwritten">
           <div class="column is-12">
             <p>The handwritten form is:</p>
           </div>
@@ -94,7 +101,7 @@
             <h3 class="size-is-4">BOARD FOOTAGE = </h3>
           </div>
           <div class="column is-5">
-            <div class="columns is-multiline">
+            <div class="columns is-multiline upper-handwritten--right">
               <div class="column is-12">
                 <p>Width in inches x length in feet x thickness in inches</p>
               </div>

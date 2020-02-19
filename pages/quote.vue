@@ -30,7 +30,7 @@
         <div class="column is-12">
           <b-collapse class="card" v-for="(collapse, index) of collapses" :key="index" :open="isOpen == index" @open="isOpen = index">
             <div slot="trigger" slot-scope="props" class="card-header" role="button">
-              
+
               <a class="card-header-icon">
                 <b-icon :icon="props.open ? 'menu-down' : 'menu-up'">
                 </b-icon>
@@ -132,17 +132,22 @@
           <div class="label">Does your project have a timeline?</div>
           <div ><input v-model="form.timeline"></div>
         </div>
-        <div class="column is-12">
+        <!-- <div class="column is-12">
           <recaptcha
             @error="onError"
             @success="onSuccess"
             @expired="onExpired"
             class="recapture"
           />
+        </div> -->
+        <div class="column is-12 err-msg" v-if="errorMsg">
+          {{errorMsg}}
         </div>
         <div class="form-buttons">
           <button @click="downloadPdf()">DOWNLOAD MY CUT-LIST</button>
-          <button @click="submitCutList()">SUBMIT MY CUT-LIST</button>
+          <button @click="submitCutList()">
+            {{submitting?"SUBMITTING":"SUBMIT"}} MY CUT-LIST
+          </button>
         </div>
         <div class="column is-12 please-note">
           *Please note: This is our best estimation only, please allow 24-48 hours for Mud Bay Lumber Co. to verify your quote should you decide to submit your cut-list.
@@ -167,6 +172,8 @@ export default {
         building: '',
         timeline: ''
       },
+      errorMsg:'',
+      submitting: false,
       story: {
         content: {}
       },
@@ -389,7 +396,7 @@ export default {
     },
     downloadPdf() {
       this.$axios.$post('api/download-pdf',
-        {bodyData: this.collapses},
+        {bodyData: this.collapses, user: this.form},
         {
           responseType: 'arraybuffer',
           headers: {
@@ -409,22 +416,35 @@ export default {
       })
     },
     async submitCutList() {
-      console.log('click submit');
-      try {
-        const token = await this.$recaptcha.getResponse()
-        await this.$recaptcha.reset()
-      } catch (error) {
-        console.log('Login error:', error)
-      }
+      this.onSuccess("");
+      // console.log('click submit');
+      // this.errorMsg="";
+      // try {
+      //   const token = await this.$recaptcha.getResponse()
+      //   await this.$recaptcha.reset()
+      // } catch (error) {
+      //   this.errorMsg = "Please verify you are not a robot.";
+      //   console.log('Login error:', error)
+      // }
     },
     onError (error) {
       console.log('Error happened:', error)
     },
     onSuccess (token) {
-        this.$axios.$post('api/mail', {bodyData: this.collapses, user: this.form})
-          .then((res)=> {
-            console.log(res);
-          })
+      console.log('start send message');
+      this.submitting = true;
+      this.errorMsg="";
+
+      this.$axios.$post('api/mail', {bodyData: this.collapses, user: this.form})
+        .then((res)=> {
+          console.log(res);
+          this.submitting = false;
+        }).catch(err => {
+          console.log(err)
+          this.submitting = false;
+          this.errorMsg = "Submitting failed.";
+        })
+
     },
     onExpired () {
       console.log('Expired')

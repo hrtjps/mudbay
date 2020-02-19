@@ -32,6 +32,9 @@
   @include mobile {
     margin-top: 0;
   }
+  @include mobileland {
+    margin-top: 0;
+  }
   @include desktop {
     margin-top: -100px;
   }

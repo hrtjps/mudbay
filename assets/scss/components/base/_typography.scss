@@ -3,6 +3,7 @@ h1 {
   font-size: $size-1;
   @include mobile {
     font-size: 3.1rem;
+    line-height: 3rem;
   }
   @include tablet {
     font-size: $size-2;
@@ -10,11 +11,26 @@ h1 {
   @include widescreen {
     font-size: $size-1;
   }
+  @include iphoneFive {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+  @include mobileport {
+    font-size: 2.4rem;
+  }
+  @include tabletport {
+    font-size: $size-2;
+    margin-top: 15px;
+  }
 }
 
 h2 {
   font-family: $fontsubheader;
   font-weight: 700;
+
+  @include mobile {
+    line-height: 1.5rem;
+  }
 }
 
 h3 {
@@ -23,11 +39,43 @@ h3 {
     font-family: $fontsubheader;
     font-weight: 300;
     font-size: 1.125rem;
+    @include iphoneFive {
+      font-size: 1rem;
+    }
+    a {
+      color: inherit;
+      &:hover {
+        color: #a67438;
+      }
+    }
   }
 }
 
 h4 {
   font-family: $fontheader;
+}
+
+.comingsoon {
+  font-family: $fontheader;
+  color:white;
+  font-size:5.75rem;
+  position:absolute;
+  top:35%;
+  width:100%;
+  text-align:center;
+  text-transform: uppercase;
+
+  @include mobileport {
+    font-size: 4.25rem;
+  }
+
+  @include iphoneFive {
+    font-size: 3.5rem;
+  }
+
+  @include widescreen-only {
+    font-size: 4.5rem;
+  }
 }
 
 h5 {
@@ -74,6 +122,18 @@ p {
       font-size: 1.75rem;
       font-weight: 700;
       color: white;
+
+      @include mobile {
+        font-size: 1rem;
+      }
+
+      @include tablet-only {
+        font-size: 1.25rem;
+      }
+
+      @include desktop-only {
+        font-size: 1.35rem;
+      }
     }
   }
 }

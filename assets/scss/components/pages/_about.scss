@@ -2,9 +2,19 @@
 
    &--main-content {
      margin-top: -60px;
+
+     @include desktop {
+       margin-top: 20px;
+     }
+
+     @include xxlarge {
+       margin-top: -60px;
+     }
+
      p, h2 {
        color: white;
      }
+
      h2 {
        margin-top: 150px;
        margin-bottom: 85px;
@@ -15,6 +25,7 @@
        padding-left: 80px;
        padding-right: 130px
      }
+
      p {
        margin-bottom: 30px;
        font-family: $fontsubheader;
@@ -23,53 +34,92 @@
        padding-left: 80px;
        padding-right: 130px;
      }
-     .item-img {
+
+
+     &__item-img {
+
       background-size: cover !important;
       background-position: center !important;
-      height: 772px !important;
+      height: 822px;
+      position: relative;
+
+      @include mobile {
+        height: 400px;
+      }
+
+      @include mobileland {
+        height: 800px;
+      }
+
+      img {
+        position: absolute;
+        top: 20%;
+        right: 0;
+
+        @include mobile {
+          display: none;
+        }
+      }
      }
 
-     &__chad-img {
-       background: url('~assets/img/about_chad.jpg');
-       background-size: cover;
-       background-position: center;
-       height: 772px;
+     @include mobile {
+       margin-top: 25px;
+
+       h2, p {
+         padding-left: 20px;
+         padding-right: 20px;
+       }
+
+       h2 {
+         margin-top: 40px;
+         margin-bottom: 40px;
+         font-size: 3rem;
+       }
+
+       p {
+         font-size: 1.25rem;
+         line-height: 1.5;
+       }
+
      }
 
-     &__chad-details {
-       background-color: $treegreen;
+     @include mobileland {
+       margin-top: 50px;
      }
 
-     &__sylvia-img {
-       background: url('~assets/img/about_sylvia.jpg');
-       background-size: cover;
-       background-position: center;
-       height: 772px;
+     @include desktop {
+       p, h2 {
+         padding-left: 50px;
+         padding-right: 50px;
+       }
+       h2 {
+         margin-bottom: 20px;
+       }
+       p {
+         font-size: 1.35rem;
+       }
      }
 
-     &__sylvia-details {
-       background-color: #738c3e;
+     @include fullhd {
+       p, h2 {
+         padding-left: 80px;
+         padding-right: 80px;
+       }
+
+       p {
+         font-size: 1.45rem;
+       }
      }
 
-     &__sage-img {
-       background: url('~assets/img/about_sage.jpg');
-       background-size: cover;
-       background-position: center;
-       height: 772px;
-     }
-     &__sage-details {
-       background-color: #423629;
-     }
-
-     &__scott-details {
-       background-color: #a67438;
+     @include xxlarge {
+       p, h2 {
+         padding-left: 80px;
+         padding-right: 130px
+       }
+       p {
+         font-size: 1.438rem;
+       }
      }
 
-     &__scott-img {
-       background: url('~assets/img/about_scott.jpg');
-       background-size: cover;
-       background-position: center;
-       height: 772px;
-     }
-   }
+   } // end main-content
  }

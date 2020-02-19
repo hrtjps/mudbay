@@ -35,15 +35,15 @@
             v-for="product in products"
             :key="product.id"
           >
-            <nuxt-link :to="'/products/' + product.slug" :key="product.id">
-              <div class="card product-item-card-img"
+            <nuxt-link :class="`${product.content.id}`" :to="'/products/' + product.slug" :key="product.id">
+              <div class="card product-item-card-img" 
                 :style="{'background': 'url(' + product.content.cardImg + ')'}"
                 v-editable="product.content">
                 <div class="card-content">
                   <h1 class="is-size-3">{{product.content.title}}</h1>
                   <p>{{product.content.content}}</p>
                 </div>
-                <h1 style="text-transform: uppercase; font-family: Davish; color:white; font-size:5.75rem; position:absolute; top:35%; width:100%; text-align:center" >{{product.content.soon}}</h1>
+                <h4 class="comingsoon">{{product.content.soon}}</h4>
               </div>
             </nuxt-link>
           </div>

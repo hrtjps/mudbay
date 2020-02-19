@@ -1,7 +1,7 @@
 <template>
   <div class="about">
-    <section class="hero is-fullheight about-hero" 
-      v-editable="story.content.Hero[0]" 
+    <section class="hero is-fullheight about-hero"
+      v-editable="story.content.Hero[0]"
       :style="{'background-image': 'url(' + story.content.Hero[0].image + ')'}"
       >
       <div class="hero-body">
@@ -17,14 +17,15 @@
       <div class="container">
         <div class="columns is-multiline">
           <div class="columns is-multiline" v-for="(item, key) in story.content.items" :key="key"
-            :style="key%2===1?{'flex-direction':'row-reverse', 'display': 'flex'}:null"
+            :style="key%2===1?{'flex-direction':'row-reverse'}:null"
             v-editable="item"
           >
-            <div class="column is-half about--main-content item-img"
+            <div class="column is-12-tablet is-half-desktop about--main-content__item-img"
               :style="{'background': 'url(' + item.image + ')'}"
             >
+            <img :src="item.triangle" alt="" :style="key%2===1?{'left':'0', 'right':'unset'}:null">
             </div>
-            <div class="column is-half about--main-content"
+            <div class="column is-12-tablet is-half-desktop about--main-content__description"
               :style="{'background-color': item.bgColor.color}"
             >
                 <h2>{{item.title}}</h2>
@@ -36,6 +37,7 @@
     </section>
   </div>
 </template>
+
 
 <script>
 import storyblockLivePreview from "@/mixins/storyblokLivePreview";
@@ -62,6 +64,3 @@ export default {
   }
 }
 </script>
-
-<style lang="css" scoped>
-</style>

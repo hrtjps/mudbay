@@ -12,6 +12,10 @@
     letter-spacing: 0.071rem;
     text-transform: uppercase;
 
+    @include mobile {
+      font-size: 1.5rem;
+    }
+
     @include desktop {
       font-size: 2rem;
     }
@@ -23,7 +27,7 @@
     }
     &:hover {
       background-color: transparent;
-      color: #423629;
+      color: #423629 !important;
     }
     &:focus {
       color: #423629;
@@ -53,12 +57,28 @@
     @include mobile {
       max-height: 5rem;
     }
+    @include iphoneFive {
+      max-height: 2.5rem;
+    }
     @include desktop {
       max-height: 4rem;
     }
     @include fullhd {
       min-height: 10.938rem;
     }
+  }
+}
+
+.navbar-dropdown {
+  background-color: transparent;
+  border-top: none;
+  margin-top: -90px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: none;
+
+  .navbar-item {
+    padding: 0 0.6rem;
   }
 }
 
