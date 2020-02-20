@@ -63,7 +63,7 @@ export default async function (req, res, next) {
           + '  </div>'
     subTotal = 0;
     element.species.forEach(el => {
-      if(el.quantity>0) {
+      if(el.quantity>0 && element.dimensions[el.dimension]) {
         subTotal +=element.dimensions[el.dimension].prices[el.length] * el.quantity;
         data +=' <div class="list">'
             + '    <div class="info">'

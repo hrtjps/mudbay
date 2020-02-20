@@ -13,7 +13,7 @@ module.exports = {
     ],
     script: [
       { src: '//app.storyblok.com/f/storyblok-latest.js'},
-      // { src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true}
+      { src: 'https://www.google.com/recaptcha/api.js', async: true, defer: true}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

@@ -132,14 +132,14 @@
           <div class="label">Does your project have a timeline?</div>
           <div ><input v-model="form.timeline"></div>
         </div>
-        <!-- <div class="column is-12">
+        <div class="column is-12">
           <recaptcha
             @error="onError"
             @success="onSuccess"
             @expired="onExpired"
             class="recapture"
           />
-        </div> -->
+        </div>
         <div class="column is-12 err-msg" v-if="errorMsg">
           {{errorMsg}}
         </div>
@@ -416,16 +416,15 @@ export default {
       })
     },
     async submitCutList() {
-      this.onSuccess("");
-      // console.log('click submit');
-      // this.errorMsg="";
-      // try {
-      //   const token = await this.$recaptcha.getResponse()
-      //   await this.$recaptcha.reset()
-      // } catch (error) {
-      //   this.errorMsg = "Please verify you are not a robot.";
-      //   console.log('Login error:', error)
-      // }
+      console.log('click submit');
+      this.errorMsg="";
+      try {
+        const token = await this.$recaptcha.getResponse()
+        await this.$recaptcha.reset()
+      } catch (error) {
+        this.errorMsg = "Please verify you are not a robot.";
+        console.log('Login error:', error)
+      }
     },
     onError (error) {
       console.log('Error happened:', error)
