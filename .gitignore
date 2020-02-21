@@ -2,4 +2,4 @@
 *.env
 .idea
 package-lock.json
-.nuxt/*
+/.nuxt
