@@ -112,25 +112,25 @@
         </div>
         <div class="column is-4">
           <div class="label">Name</div>
-          <div ><input v-model="form.name"></div>
+          <div ><input v-model="form.name" required></div>
         </div>
         <div class="column is-4">
           <div class="label">Email</div>
-          <div ><input v-model="form.email"></div>
+          <div ><input v-model="form.email" required></div>
         </div>
         <div class="column is-4">
           <div class="label">Phone</div>
-          <div ><input v-model="form.phone"></div>
+          <div ><input v-model="form.phone" required></div>
         </div>
 
         <div class="column is-12">
           <div class="label">What are you building?</div>
-          <div ><input v-model="form.building"></div>
+          <div ><input v-model="form.building" required></div>
         </div>
 
         <div class="column is-12">
           <div class="label">Does your project have a timeline?</div>
-          <div ><input v-model="form.timeline"></div>
+          <div ><input v-model="form.timeline" required></div>
         </div>
         <div class="column is-12">
           <recaptcha
@@ -394,32 +394,67 @@ export default {
       }
 
     },
-    downloadPdf() {
-      this.$axios.$post('api/download-pdf',
-        {bodyData: this.collapses, user: this.form},
-        {
-          responseType: 'arraybuffer',
-          headers: {
-            'Accept': 'application/pdf'
-          }
-      })
-      .then((res)=> {
-        const blob = new Blob([res], {type: 'application/pdf'})
-        const link = document.createElement('a')
-        const url = window.URL.createObjectURL(blob)
-        link.href = url;
-        link.download = `cut-list.pdf`
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        window.open(url)
-      })
+    async downloadPdf() {
+      
+      this.errorMsg="";
+      try {
+        const token = await this.$recaptcha.getResponse()
+        console.log(token);
+        if(!this.form.name || !this.form.email || !this.form.phone || !this.form.building || !this.form.timeline) { 
+          this.errorMsg="Please full fill input fields."
+          return;
+        }
+
+        this.$axios.$post('api/download-pdf',
+          {bodyData: this.collapses, user: this.form},
+          {
+            responseType: 'arraybuffer',
+            headers: {
+              'Accept': 'application/pdf'
+            }
+        })
+        .then((res)=> {
+          const blob = new Blob([res], {type: 'application/pdf'})
+          const link = document.createElement('a')
+          const url = window.URL.createObjectURL(blob)
+          link.href = url;
+          link.download = `cut-list.pdf`
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          window.open(url)
+        })
+        await this.$recaptcha.reset()
+      } catch (error) {
+        this.errorMsg = "Please verify you are not a robot.";
+        console.log('Login error:', error)
+      }
     },
     async submitCutList() {
       console.log('click submit');
       this.errorMsg="";
       try {
         const token = await this.$recaptcha.getResponse()
+        console.log(token);
+        if(token) {
+          this.errorMsg="";
+
+          if(!this.form.name || !this.form.email || !this.form.phone || !this.form.building || !this.form.timeline) { 
+            this.errorMsg="Please full fill input fields."
+            return;
+          }
+
+          this.submitting = true;
+          this.$axios.$post('api/mail', {bodyData: this.collapses, user: this.form})
+            .then((res)=> {
+              console.log(res);
+              this.submitting = false;
+            }).catch(err => {
+              console.log(err)
+              this.submitting = false;
+              this.errorMsg = "Submitting failed.";
+            })
+        }
         await this.$recaptcha.reset()
       } catch (error) {
         this.errorMsg = "Please verify you are not a robot.";
@@ -431,19 +466,6 @@ export default {
     },
     onSuccess (token) {
       console.log('start send message');
-      this.submitting = true;
-      this.errorMsg="";
-
-      this.$axios.$post('api/mail', {bodyData: this.collapses, user: this.form})
-        .then((res)=> {
-          console.log(res);
-          this.submitting = false;
-        }).catch(err => {
-          console.log(err)
-          this.submitting = false;
-          this.errorMsg = "Submitting failed.";
-        })
-
     },
     onExpired () {
       console.log('Expired')
